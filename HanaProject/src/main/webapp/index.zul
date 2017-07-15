@@ -1,0 +1,284 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+<?page title="Anex Demo Update Application"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:zk="http://www.zkoss.org/2005/zk">
+<div id="container" apply="com.itelligence.controller.IndexController"
+	style="width:100% height:100%; text-align:center; background: #cccccc">
+
+	<style>
+		body{ margin:0; padding:0; }
+		<!-- Listbox Header -->
+		.z-listheader-content{ color: #353895 !important; }
+
+		<!-- Listbox Cell -->
+		.z-listcell-content{ color: E8CACE !important; }
+
+		<!-- Groupbox Header -->
+		.z-caption-content{ color: blue !important; }
+
+		<!-- Label -->
+		.z-label{ color: #353895 !important; font-weight: bold; }
+
+		.z-listcell-content{ float:left; }
+
+		.z-comboitem-text{ color: #353895; font-weight: bold !important;
+		}
+
+		.z-datebox-input{ color: #353895; font-weight: bold !important;
+		text-align: center; }
+		
+
+	</style>
+
+	<div id="header" style="width:100%; height:65px;">
+		<image id="logo" src="/images/imageedit_1_7083676535.gif"
+			style="padding-left: 10px; padding:6px;" />
+	</div>
+	<div id="body"
+		style="height:100%;  background-color: blue; width:1200px; margin-left:auto; margin-right:auto;">
+		<div id="criteriaSelectionContainer"
+			style="float:left; width: 30%; height:620px; padding:10px;">
+			<div id="dateSelectionContainer"
+				style="position:relative; width:80%; height:100px; 
+						">
+				<!-- Date Selection Begin -->
+
+				<label value="Date Selection" />
+				<hbox>
+					<label value="Date From: " />
+					<datebox id="dateFrom" format="yyyy/MM/dd"
+						lenient="false" compact="true" buttonVisible="true"
+						showTodayLink="true" mold="rounded" width="190px" />
+				</hbox>
+				<hbox style="padding-top: 3px;">
+					<label value="Date To: " style="padding: 6px;" />
+					<div class="clear"></div>
+					<datebox id="dateTo" format="yyyy/MM/dd"
+						lenient="false" compact="true" buttonVisible="true"
+						showTodayLink="true" mold="rounded" width="190px" />
+				</hbox>
+
+				<!-- Date Selection End -->
+			</div>
+			<div id="adultSelectionContainer"
+				style="width:80%; height:100px;margin-bottom:10px">
+				<!-- Adult Selection Begin -->
+				<label value="Adults" />
+				<hbox>
+					<label value="Adults From: " />
+					<combobox id="cmbAdultFrom" readonly="true">
+						<comboitem label="1" value="1" />
+						<comboitem label="2" value="2" />
+						<comboitem label="3" value="3" />
+						<comboitem label="4" value="4" />
+						<comboitem label="5" value="5" />
+						<comboitem label="6" value="6" />
+						<comboitem label="7" value="7" />
+						<comboitem label="8" value="8" />
+						<comboitem label="9" value="9" />
+						<comboitem label="10" value="10" />
+					</combobox>
+				</hbox>
+				<hbox style="padding-top: 3px;">
+					<label style="padding: 8px;" value="Adults To: " />
+					<combobox id="cmbAdultTo" readonly="true">
+						<comboitem label="1" value="1" />
+						<comboitem label="2" value="2" />
+						<comboitem label="3" value="3" />
+						<comboitem label="4" value="4" />
+						<comboitem label="5" value="5" />
+						<comboitem label="6" value="6" />
+						<comboitem label="7" value="7" />
+						<comboitem label="8" value="8" />
+						<comboitem label="9" value="9" />
+						<comboitem label="10" value="10" />
+					</combobox>
+				</hbox>
+				<!-- Adult Selection End -->
+			</div>
+			<div id="childrenSelectionContainer"
+				style="width:80%; height:100px;margin-bottom:10px">
+				<!-- Children Selection Begin -->
+				<label value="Children" />
+				<hbox>
+					<label value="Children From: " />
+					<combobox id="cmbChildrenFrom" readonly="true">
+						<comboitem label="0" value="0" />
+						<comboitem label="1" value="1" />
+						<comboitem label="2" value="2" />
+					</combobox>
+				</hbox>
+				<hbox style="padding-top: 3px;">
+					<label value="Children To: " style="padding: 8px;" />
+					<combobox id="cmbChildrenTo" readonly="true">
+						<comboitem label="0" value="0" />
+						<comboitem label="1" value="1" />
+						<comboitem label="2" value="2" />
+					</combobox>
+				</hbox>
+				<!-- Children Selection End -->
+
+			</div>
+			<div id="starSelectionContainer"
+				style="width:80%; height:150px;margin-bottom:10px">
+				<!-- Hotel Star Selection Begin -->
+
+				<label value="Stars" />
+				<listbox id="listboxHotelStar">
+					<listhead>
+						<listheader visible="true" label="Star"
+							value="starGroupName" />
+						<listheader visible="false" label="Star Id"
+							value="starGroupId" />
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.starGroupName}"></listcell>
+							<listcell label="${each.starGroupId}"></listcell>
+						</listitem>
+					</template>
+				</listbox>
+				<!-- Hotel Star Selection End -->
+			</div>
+		</div>
+
+		<div id="gridContainer"
+			style="height:620px; float:left; width:50%;padding:10px;">
+			<div id="searchSelectionContainer"
+				style="position:relative; width:100%; height:30px; margin-bottom:10px;">
+				<!-- Search Selection Begin -->
+
+				<label value="Search" />
+				<textbox id="txtSearch" />
+
+				<!-- Search Selection End -->
+			</div>
+			<div id="hotelGridContainer"
+				style="float:left; position:relative; width:100%; height:500px; margin-bottom:10px">
+
+				<!-- Hotel Grid Begin -->
+
+				<label value="Hotel Grid" />
+				<listbox id="listboxHotelGrid" height="535px">
+					<listhead>
+						<listheader visible="true" label="ID"
+							value="hotelId" />
+						<listheader visible="true" label="Hotel Name"
+							value="hotelName" />
+						<listheader visible="true" label="Town Name"
+							value="townName" />
+						<listheader visible="true" label="Stars"
+							value="stars" />
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.hotelId}"></listcell>
+							<listcell label="${each.hotelName}"></listcell>
+							<listcell label="${each.townName}"></listcell>
+							<listcell label="${each.stars}"></listcell>
+						</listitem>
+					</template>
+				</listbox>
+
+				<!-- Hotel Grid End -->
+
+			</div>
+		</div>
+
+		<div id="areaSelectionContainer"
+			style=" width:15%; height:600px;float:left; width:200px;padding:10px;margin-bottom:-100px;">
+			<div id="regionSelectionContainer"
+				style="float:left; position:relative; width:100%; height:200px; margin-bottom:10px">
+				<!-- Region Selection Begin -->
+
+				<label value="Region" />
+				<listbox id="listboxRegion">
+					<listhead>
+						<listheader visible="true" label="Region Name"
+							value="regionName" />
+						<listheader visible="false" label="regionId"
+							value="regionId" />
+
+					</listhead>
+				</listbox>
+
+				<!-- Region Selection End -->
+			</div>
+			<div id="townSelectionContainer"
+				style="float:left; position:relative; width:100%; height:300px; margin-bottom:100px">
+
+				<!-- Town Selection Begin -->
+
+				<label value="Towns " />
+				<listbox id="listboxTown" multiple="true"
+					checkmark="true" emptyMessage="No Region selected for towns">
+					<listhead>
+						<listheader visible="true" label="Town Name"
+							value="townName" />
+						<listheader visible="false" label="Town Id"
+							value="townId" />
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.townName}"></listcell>
+							<listcell label="${each.townId}"></listcell>
+						</listitem>
+					</template>
+				</listbox>
+
+
+				<!-- Town Selection End -->
+
+			</div>
+		</div>
+
+	</div>
+	<div id="footer"
+		style="width:100%; position:relative; clear:both; height:105px;">
+		<div id="footercontainer"
+			style="float: none;width:1200px; margin:0 auto">
+			<div id="actionSelectionContainer"
+				style="float:left; position:relative; width:30%; height:50px; margin:10px">
+				<!-- Action Selection Begin -->
+
+				<listbox id="listboxAction" multiple="false"
+					checkmark="true" width="280px">
+					<listhead>
+						<listheader value="Action" label="Action" />
+					</listhead>
+					<listitem label="Update Plane Tickets by "
+						value="1" />
+					<listitem label="Update Hotel Prices by " value="2" />
+				</listbox>
+
+				<!-- Action Selection Begin -->
+			</div>
+			<div id="factorContainer"
+				style="float:left; position:relative; width:30%; height:50px; margin:10px">
+
+				<!-- Factor Selection & Execute Button Begin -->
+
+				<label value="Factor" />
+				<hbox style="padding-left: 65px; padding-top: 5px;">
+					<textbox id="txtFactor" />
+					<button id="btnExecute" label="Execute" />
+				</hbox>
+				<!-- Factor Selection & Execute Button End -->
+
+			</div>
+			<div id="messageContainer"
+				style="float:left; width:30%; margin:10px">
+				<!-- Messages Begin -->
+				
+					<label value="Messages: "
+						style="display: table-cell;vertical-align:middle; text-align:center;" />
+						<h:br />
+					<label id="lblMessages" style="display: table-cell;vertical-align:middle; text-align:center;" />
+				
+
+				<!-- Messages End -->
+			</div>
+		</div>
+	</div>
+
+</div>
+</zk>
