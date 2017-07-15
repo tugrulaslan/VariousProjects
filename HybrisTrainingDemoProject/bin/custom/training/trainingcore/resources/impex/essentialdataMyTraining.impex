@@ -1,0 +1,5 @@
+#we put lang en to name attribute because in item.xml we have set it as localized!!!
+#See the file for the change
+INSERT_UPDATE MyTraining;code[unique=true];name[lang=en];name[lang=de];active[default=true]
+;mft;my First Training;German name;;
+;mst;my Second Training;German name;false;

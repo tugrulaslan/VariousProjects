@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+<configuration xmlns="hybris.de/schemas/hmc/generic"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+
+
+	<!-- Configuration for extension trainingcore -->
+
+	<explorertree width="185" columns="2">
+
+		<group name="trainingGroup" expand="false" description="group.catalog.description">
+			<typeref type="MyTraining" description="typeref.product.description" />
+		</group>
+
+	</explorertree>
+
+	<type name="MyTraining" mode="append">
+		<organizer>
+			<search mode="replace">
+				<condition attribute="code" />
+				<condition attribute="name" />
+				<condition attribute="active" />
+			</search>
+			<result defaultview="list">
+				<listview mode="replace">
+					<itemlayout>
+						<attribute name="code" width="50" />
+						<attribute name="name" width="200" />
+						<attribute name="active" width="200" />
+					</itemlayout>
+				</listview>
+				<editview mode="delete" />
+				<treeview mode="replace">
+					<itemlayout>
+						<attribute name="code" />
+						<attribute name="name" />
+						<attribute name="active" />
+					</itemlayout>
+				</treeview>
+			</result>
+			<editor>
+				<tab name="tab.common" position="0">
+					<section name="section.common">
+						<listlayout>
+							<attribute name="name" />
+							<attribute name="code" />
+							<attribute name="active" />
+						</listlayout>
+					</section>
+				</tab>
+			</editor>
+		</organizer>
+		<!-- Reference to my product in hmc see reference if you have no default 
+			and not set how to set display it on hmc scree -->
+		<defaultreference mode="replace">
+			<itemlayout>
+				<attribute name="code" />
+				<attribute name="name" />
+			</itemlayout>
+		</defaultreference>
+	</type>
+
+	<type name="Consignment" mode="append">
+		<organizer>
+			<editor mode="append">
+				<tab name="properties" position="0" mode="append">
+					<section name="consignment.details">
+						<listlayout mode="append">
+							<action type="item"
+								classname="org.training.core.hmc.PickupConfirmationHMCAction"
+								name="btn.consignment.confirm.pickup" />
+						</listlayout>
+					</section>
+				</tab>
+			</editor>
+		</organizer>
+	</type>
+
+</configuration>
